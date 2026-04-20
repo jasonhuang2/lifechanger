@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.UUID;
 
 public class Result {
-    private UUID uuid;
+    private UUID uuid = UUID.randomUUID();
     private List<Integer> numbers;
 
-    public Result(UUID uuid, List<Integer> numbers) {
-        this.uuid = uuid;
+    public Result() {
+        numbers = List.of();
+    }
+
+    public Result(List<Integer> numbers) {
         this.numbers = numbers;
     }
 
