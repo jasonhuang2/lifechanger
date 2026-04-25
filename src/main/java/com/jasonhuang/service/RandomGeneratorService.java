@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomGeneratorService implements RandomGeneratorServiceImpl {
-    private final int SIX_FOURTY_NINE_NUMBERS = 6;
-    private final int LOTTO_MAX_NUMBERS = 7;
-
     @Override
     public Result generateRandomNumbers(int seed, LottoTypeEnum lottoTypeEnum) {
         List<Integer> generatedNumbersList = generate(seed, lottoTypeEnum);
@@ -23,10 +20,12 @@ public class RandomGeneratorService implements RandomGeneratorServiceImpl {
         List<Integer> result = new ArrayList<>();
         Random rand = new Random(seed);
         if (lottoTypeEnum == LottoTypeEnum.LOTTOMAX) {
+            int LOTTO_MAX_NUMBERS = 7;
             for (int i = 0; i < LOTTO_MAX_NUMBERS; i++) {
                 result.add(generateSingleNumber(rand));
             }
         } else if (lottoTypeEnum == LottoTypeEnum.SIXFOURTYNINE) {
+            int SIX_FOURTY_NINE_NUMBERS = 6;
             for (int i = 0; i < SIX_FOURTY_NINE_NUMBERS; i++) {
                 result.add(generateSingleNumber(rand));
             }
