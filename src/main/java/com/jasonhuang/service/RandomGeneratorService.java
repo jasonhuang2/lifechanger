@@ -21,21 +21,21 @@ public class RandomGeneratorService implements RandomGeneratorServiceImpl {
     private List<Integer> generate(int seed,
                                    LottoTypeEnum lottoTypeEnum) {
         List<Integer> result = new ArrayList<>();
+        Random rand = new Random(seed);
         if (lottoTypeEnum == LottoTypeEnum.LOTTOMAX) {
             for (int i = 0; i < LOTTO_MAX_NUMBERS; i++) {
-                result.add(generateSingleNumber(seed));
+                result.add(generateSingleNumber(rand));
             }
         } else if (lottoTypeEnum == LottoTypeEnum.SIXFOURTYNINE) {
             for (int i = 0; i < SIX_FOURTY_NINE_NUMBERS; i++) {
-                result.add(generateSingleNumber(seed));
+                result.add(generateSingleNumber(rand));
             }
         }
 
         return result;
     }
 
-    private int generateSingleNumber(int seed) {
-        Random rand = new Random(seed);
+    private int generateSingleNumber(Random rand) {
         return rand.nextInt(50) + 1;
     }
 }
