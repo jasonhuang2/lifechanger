@@ -4,5 +4,5 @@ import com.jasonhuang.model.LottoTypeEnum;
 import com.jasonhuang.model.Result;
 
 public interface RandomGeneratorServiceImpl {
-    Result generateRandomNumbers(int seed, LottoTypeEnum lottoTypeEnum);
+    Result generateRandomNumbers(LottoTypeEnum lottoTypeEnum);
 }
