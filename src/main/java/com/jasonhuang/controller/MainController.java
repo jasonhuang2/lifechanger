@@ -8,18 +8,19 @@ import com.jasonhuang.service.impl.RandomGeneratorServiceImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.UUID;
-
 @Tag(name = "MainController", description = "This is responsible for give the status of application")
 @RestController
 @RequestMapping(value = "/test")
 public class MainController implements MainControllerImpl {
 
+    private final RandomGeneratorServiceImpl randomGeneratorService;
+
+    public MainController(RandomGeneratorService randomGeneratorService) {
+        this.randomGeneratorService = randomGeneratorService;
+    }
+
     @GetMapping("/generateRandomNumbers")
-    public Result retrieveResult(@RequestParam(name = "seed") int seed,
-                                 @RequestParam(name = "lottoType") LottoTypeEnum lottoTypeEnum) {
-        RandomGeneratorServiceImpl randomGeneratorService = new RandomGeneratorService();
-        return randomGeneratorService.generateRandomNumbers(seed, lottoTypeEnum);
+    public Result retrieveResult(@RequestParam(name = "lottoType") LottoTypeEnum lottoTypeEnum) {
+        return randomGeneratorService.generateRandomNumbers(lottoTypeEnum);
     }
 }

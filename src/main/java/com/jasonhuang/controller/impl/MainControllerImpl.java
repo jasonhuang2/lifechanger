@@ -5,5 +5,5 @@ import com.jasonhuang.model.Result;
 
 
 public interface MainControllerImpl {
-    Result retrieveResult(int seed, LottoTypeEnum lottoTypeEnum);
+    Result retrieveResult(LottoTypeEnum lottoTypeEnum);
 }
